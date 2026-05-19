@@ -32,13 +32,22 @@ class CategoryController
         $page     = max(1, min($page, $pages ?: 1));
         $articles = $articleModel->getByCategory((int) $id, $page, $perPage, $sort);
 
+        $breadcrumbs = [
+            ['title' => 'Главная',          'url' => '/'],
+            ['title' => $category['name'],  'url' => '/category/' . $id],
+        ];
+        if ($page > 1) {
+            $breadcrumbs[] = ['title' => 'Страница ' . $page, 'url' => null];
+        }
+
         $this->view->render('category/show.tpl', [
-            'title'    => $category['name'],
-            'category' => $category,
-            'articles' => $articles,
-            'sort'     => $sort,
-            'page'     => $page,
-            'pages'    => $pages,
+            'title'       => $category['name'],
+            'category'    => $category,
+            'articles'    => $articles,
+            'sort'        => $sort,
+            'page'        => $page,
+            'pages'       => $pages,
+            'breadcrumbs' => $breadcrumbs,
         ]);
     }
 }

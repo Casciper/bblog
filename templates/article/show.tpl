@@ -1,6 +1,8 @@
 {extends file="layouts/main.tpl"}
 
 {block name="content"}
+    {include file="partials/breadcrumbs.tpl"}
+
     <article class="article">
         <header class="article__header">
             <h1 class="article__title">{$article.title}</h1>
@@ -42,6 +44,8 @@
                             <a href="/article/{$item.id}" class="article-card__img-wrap">
                                 <img src="{$item.image}" alt="{$item.title}" class="article-card__img">
                             </a>
+                        {else}
+                            <div class="article-card__img-placeholder"></div>
                         {/if}
                         <div class="article-card__body">
                             <h3 class="article-card__title">

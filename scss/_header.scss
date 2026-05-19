@@ -1,0 +1,29 @@
+@use 'variables' as *;
+.header {
+    border-bottom: 1px solid $color-border;
+    padding: 16px 0;
+
+    .container {
+        display: flex;
+        align-items: center;
+    }
+
+    &__logo {
+        font-size: 20px;
+        font-weight: 700;
+        color: $color-text;
+        letter-spacing: -0.5px;
+
+        &:hover {
+            text-decoration: none;
+            color: $color-accent;
+        }
+    }
+}
+
+.footer {
+    border-top: 1px solid $color-border;
+    padding: 20px 0;
+    color: $color-muted;
+    font-size: 14px;
+}

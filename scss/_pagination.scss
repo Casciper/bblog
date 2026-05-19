@@ -1,0 +1,33 @@
+@use 'variables' as *;
+.pagination {
+    display: flex;
+    gap: 6px;
+    margin-top: 32px;
+    align-items: center;
+
+    &__link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 36px;
+        height: 36px;
+        padding: 0 8px;
+        border: 1px solid $color-border;
+        border-radius: $radius;
+        font-size: 14px;
+        color: $color-text;
+
+        &:hover {
+            text-decoration: none;
+            border-color: $color-accent;
+            color: $color-accent;
+        }
+
+        &--active {
+            background: $color-accent;
+            border-color: $color-accent;
+            color: #fff;
+            pointer-events: none;
+        }
+    }
+}

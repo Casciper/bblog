@@ -1,0 +1,11 @@
+@use 'variables' as *;
+.container {
+    max-width: $container-width;
+    margin: 0 auto;
+    padding: 0 $gap;
+}
+
+.main {
+    padding: 40px 0 60px;
+    flex: 1;
+}

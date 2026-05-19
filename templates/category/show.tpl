@@ -1,6 +1,8 @@
 {extends file="layouts/main.tpl"}
 
 {block name="content"}
+    {include file="partials/breadcrumbs.tpl"}
+
     <div class="category-header">
         <h1 class="category-header__title">{$category.name}</h1>
         {if $category.description}
@@ -23,6 +25,8 @@
                         <a href="/article/{$article.id}" class="article-card__img-wrap">
                             <img src="{$article.image}" alt="{$article.title}" class="article-card__img">
                         </a>
+                    {else}
+                        <div class="article-card__img-placeholder"></div>
                     {/if}
                     <div class="article-card__body">
                         <h2 class="article-card__title">
@@ -43,7 +47,7 @@
         {if $pages > 1}
             <nav class="pagination">
                 {if $page > 1}
-                    <a href="/category/{$category.id}{if $page > 2}/p{$page-1}{/if}?sort={$sort}" class="pagination__link">&laquo;</a>
+                    <a href="/category/{$category.id}{if $page > 2}/p{$page-1}{/if}?sort={$sort}" class="pagination__link pagination__link--arrow">&laquo;</a>
                 {/if}
 
                 {for $i = 1 to $pages}
@@ -55,7 +59,7 @@
                 {/for}
 
                 {if $page < $pages}
-                    <a href="/category/{$category.id}/p{$page+1}?sort={$sort}" class="pagination__link">&raquo;</a>
+                    <a href="/category/{$category.id}/p{$page+1}?sort={$sort}" class="pagination__link pagination__link--arrow">&raquo;</a>
                 {/if}
             </nav>
         {/if}

@@ -1,0 +1,33 @@
+@use 'variables' as *;
+
+.breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 20px;
+    font-size: 13px;
+
+    &__item {
+        color: $color-muted;
+
+        &:hover {
+            color: $color-accent;
+            text-decoration: none;
+        }
+
+        &--current {
+            color: $color-text;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 300px;
+        }
+    }
+
+    &__sep {
+        color: $color-border;
+        user-select: none;
+    }
+}
