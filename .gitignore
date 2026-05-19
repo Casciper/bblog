@@ -1,0 +1,12 @@
+.idea
+.env
+/vendor/
+/templates_c/*
+/cache/*
+/docker/mysql/db/
+/public/uploads/articles/*
+
+# keep empty dirs
+!templates_c/.gitkeep
+!cache/.gitkeep
+!public/uploads/articles/.gitkeep

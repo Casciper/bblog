@@ -1,0 +1,36 @@
+services:
+
+  php:
+    build: ./docker/php-fpm
+    image: ${DOCKER_NAME}_php
+    container_name: ${DOCKER_NAME}_php
+    restart: unless-stopped
+    working_dir: /var/www/${DOCKER_NAME}/site
+    volumes:
+      - ./docker/php-fpm/php.ini:/etc/php/8.3/cli/conf.d/99-overrides.ini
+      - .:/var/www/${DOCKER_NAME}/site
+    ports:
+      - ${APP_DOCKER_PORT}:8000
+    networks:
+      - internal
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8
+    container_name: ${DOCKER_NAME}_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DOCKER_MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${DOCKER_NAME}
+    volumes:
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/99-overrides.cnf
+      - ./docker/mysql/db:/var/lib/mysql
+      - ./docker/mysql/bak:/bak
+    ports:
+      - ${DOCKER_MYSQL_PORT}:3306
+    networks:
+      - internal
+
+networks:
+  internal:
