@@ -1,0 +1,5 @@
+{extends file="layouts/main.tpl"}
+
+{block name="content"}
+    <h1>Главная</h1>
+{/block}
