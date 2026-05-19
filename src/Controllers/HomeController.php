@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Core\View;
+use App\Models\Category;
 
 class HomeController
 {
@@ -10,8 +11,11 @@ class HomeController
 
     public function index(): void
     {
+        $category = new Category();
+
         $this->view->render('home/index.tpl', [
-            'title' => 'Главная',
+            'title'      => 'Главная',
+            'categories' => $category->getWithArticles(),
         ]);
     }
 }
